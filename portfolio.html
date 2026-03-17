@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Chunang Xu | Professional Portfolio</title>
+	<style>
+		:root {
+			--bg: #f5f7fb;
+			--surface: #ffffff;
+			--ink: #1e2530;
+			--muted: #5d6a79;
+			--line: #dfe5ee;
+			--brand: #0f4c81;
+			--brand-soft: #e8f2fb;
+			--accent: #118a75;
+			--radius: 14px;
+			--shadow: 0 10px 28px rgba(20, 36, 52, 0.08);
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+			color: var(--ink);
+			background:
+				radial-gradient(circle at 90% -10%, #d8ebff 0%, rgba(216, 235, 255, 0) 45%),
+				radial-gradient(circle at -10% 10%, #d9f4ee 0%, rgba(217, 244, 238, 0) 40%),
+				var(--bg);
+			line-height: 1.55;
+		}
+
+		.container {
+			width: min(1100px, 92%);
+			margin: 0 auto;
+		}
+
+		header {
+			position: sticky;
+			top: 0;
+			z-index: 10;
+			backdrop-filter: blur(8px);
+			background: rgba(245, 247, 251, 0.92);
+			border-bottom: 1px solid var(--line);
+		}
+
+		.nav {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 14px 0;
+			gap: 14px;
+			flex-wrap: wrap;
+		}
+
+		.name {
+			font-weight: 700;
+			letter-spacing: 0.2px;
+			color: var(--brand);
+		}
+
+		.nav-links {
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+		}
+
+		.nav-links a {
+			text-decoration: none;
+			color: var(--ink);
+			border: 1px solid var(--line);
+			border-radius: 999px;
+			padding: 6px 12px;
+			font-size: 0.9rem;
+			background: var(--surface);
+		}
+
+		.hero {
+			padding: 42px 0 20px;
+			display: grid;
+			gap: 16px;
+		}
+
+		.hero-card {
+			background: linear-gradient(130deg, #0f4c81, #125d9c 60%, #0f4c81);
+			color: #fff;
+			border-radius: 20px;
+			box-shadow: var(--shadow);
+			padding: 24px;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.hero-card:after {
+			content: "";
+			position: absolute;
+			width: 260px;
+			height: 260px;
+			right: -80px;
+			top: -90px;
+			border-radius: 50%;
+			background: rgba(255, 255, 255, 0.12);
+		}
+
+		h1 {
+			margin: 0;
+			font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+			line-height: 1.2;
+		}
+
+		.hero p {
+			margin: 12px 0 0;
+			max-width: 760px;
+			color: #e9f3fb;
+		}
+
+		.hero-meta {
+			margin-top: 16px;
+			display: flex;
+			gap: 8px;
+			flex-wrap: wrap;
+		}
+
+		.chip {
+			padding: 6px 10px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.16);
+			border: 1px solid rgba(255, 255, 255, 0.26);
+			font-size: 0.85rem;
+		}
+
+		section {
+			margin: 24px 0;
+			scroll-margin-top: 88px;
+		}
+
+		.section-title {
+			margin: 0 0 12px;
+			font-size: 1.4rem;
+			color: var(--ink);
+		}
+
+		.section-subtitle {
+			margin: 0 0 14px;
+			color: var(--muted);
+		}
+
+		.grid-2 {
+			display: grid;
+			grid-template-columns: 1.1fr 0.9fr;
+			gap: 14px;
+		}
+
+		.card {
+			background: var(--surface);
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			box-shadow: var(--shadow);
+			padding: 18px;
+		}
+
+		.resume-lines,
+		.list-tight,
+		.project-list,
+		.skill-list {
+			margin: 0;
+			padding-left: 20px;
+		}
+
+		.resume-lines li,
+		.list-tight li,
+		.project-list li,
+		.skill-list li {
+			margin: 5px 0;
+		}
+
+		.btn-row {
+			margin-top: 14px;
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+		}
+
+		.btn {
+			display: inline-block;
+			text-decoration: none;
+			border-radius: 10px;
+			border: 1px solid var(--line);
+			background: #fff;
+			color: var(--ink);
+			padding: 9px 14px;
+			font-weight: 600;
+			font-size: 0.92rem;
+		}
+
+		.btn.primary {
+			background: var(--brand);
+			color: #fff;
+			border-color: var(--brand);
+		}
+
+		.projects {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 14px;
+		}
+
+		.project-card {
+			background: var(--surface);
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			box-shadow: var(--shadow);
+			padding: 16px;
+			border-top: 4px solid var(--brand);
+		}
+
+		.project-card h3 {
+			margin: 0 0 8px;
+			font-size: 1.05rem;
+		}
+
+		.meta {
+			color: var(--muted);
+			font-size: 0.9rem;
+			margin: 0 0 10px;
+		}
+
+		.tag-row {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 6px;
+			margin-top: 8px;
+		}
+
+		.tag {
+			font-size: 0.78rem;
+			border-radius: 999px;
+			padding: 4px 9px;
+			background: var(--brand-soft);
+			color: var(--brand);
+			border: 1px solid #c7def4;
+		}
+
+		.impact {
+			margin-top: 10px;
+			padding: 10px;
+			border-left: 3px solid var(--accent);
+			background: #eefaf7;
+			color: #184f43;
+			border-radius: 8px;
+			font-size: 0.92rem;
+		}
+
+		.project-visual {
+			margin-top: 12px;
+			border-radius: 10px;
+			overflow: hidden;
+			border: 1px solid #c7d2e4;
+			background: #f2f6fc;
+		}
+
+		.project-visual img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+
+		.project-visual .fallback {
+			display: none;
+			padding: 12px;
+			font-size: 0.9rem;
+			color: #334155;
+		}
+
+		.project-visual figcaption {
+			padding: 8px 10px;
+			font-size: 0.82rem;
+			color: #4b5563;
+			background: #e9eff9;
+			border-top: 1px solid #c7d2e4;
+		}
+
+		.skills-grid {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 12px;
+		}
+
+		.skill-box {
+			background: var(--surface);
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			box-shadow: var(--shadow);
+			padding: 14px;
+		}
+
+		.skill-box h4 {
+			margin: 0 0 8px;
+			color: var(--brand);
+			font-size: 1rem;
+		}
+
+		footer {
+			margin-top: 30px;
+			padding: 22px 0 36px;
+			color: var(--muted);
+			font-size: 0.9rem;
+			text-align: center;
+		}
+
+		@media (max-width: 940px) {
+			.grid-2 {
+				grid-template-columns: 1fr;
+			}
+
+			.projects {
+				grid-template-columns: 1fr;
+			}
+
+			.skills-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="container nav">
+			<div class="name">Chunang Xu | Digital Portfolio</div>
+			<nav class="nav-links" aria-label="Section navigation">
+				<a href="#about">About</a>
+				<a href="#resume">Resume</a>
+				<a href="#projects">Projects</a>
+				<a href="#skills">Skills</a>
+				<a href="#reflection">Reflection</a>
+				<a href="#contact">Contact</a>
+			</nav>
+		</div>
+	</header>
+
+	<main class="container">
+		<section class="hero" aria-label="Portfolio introduction">
+			<div class="hero-card">
+				<h1>MPS Informatics Portfolio</h1>
+				<p>
+					I am a graduate student in the Information Security stream at Northeastern University, Toronto,
+					with a software engineering foundation from the University of Toronto. This portfolio highlights
+					the strongest examples of my technical execution, security mindset, and growth toward IT leadership roles.
+				</p>
+				<div class="hero-meta">
+					<span class="chip">Information Security</span>
+					<span class="chip">Full-stack Development</span>
+					<span class="chip">Systems and Cloud Security</span>
+					<span class="chip">Applied Problem Solving</span>
+				</div>
+			</div>
+		</section>
+
+		<section id="about" aria-labelledby="about-title">
+			<h2 id="about-title" class="section-title">About Me</h2>
+			<p class="section-subtitle">
+				Academic background, professional direction, and what I bring to technical teams.
+			</p>
+			<div class="grid-2">
+				<article class="card">
+					<p>
+						I am Chunang Xu, an MPS in Informatics candidate focused on Information Security.
+						My background combines software engineering, secure system design, and practical full-stack delivery.
+						Across internships and project work, I have built production-oriented solutions in threat intelligence,
+						test automation, and healthcare workflows.
+					</p>
+					<p>
+						My career goal is to contribute in security-focused software and IT leadership roles where I can connect
+						engineering execution with business outcomes, especially in domains that require both reliability and compliance.
+					</p>
+				</article>
+				<article class="card">
+					<h3>Education Highlights</h3>
+					<ul class="resume-lines">
+						<li><strong>Northeastern University, Toronto</strong> - Master of Professional Studies in Informatics (Information Security), Sep 2024 - Jun 2026</li>
+						<li><strong>University of Toronto Scarborough</strong> - Honours BSc, Computer Science (Software Engineering), Sep 2018 - Jun 2024</li>
+						<li>Dean's List recognition (2019)</li>
+						<li>Relevant focus: databases, secure systems, networking, ethical hacking, and software development</li>
+					</ul>
+				</article>
+			</div>
+		</section>
+
+		<section id="resume" aria-labelledby="resume-title">
+			<h2 id="resume-title" class="section-title">Resume and Professional Snapshot</h2>
+			<p class="section-subtitle">
+				Summary of current experience for recruiters and hiring managers.
+			</p>
+			<div class="card">
+				<h3>Current Resume Summary</h3>
+				<ul class="project-list">
+					<li><strong>Network Security Intern, Alibaba Group (Jul 2025 - Sep 2025):</strong> built an automated IOC intelligence collection platform with API integration, web scraping, PostgreSQL storage, and SIEM/IDS-IPS correlation workflows.</li>
+					<li><strong>Assistant Engineer, Huawei Technologies Canada (May 2022 - May 2023):</strong> reimplemented and optimized a load testing algorithm from R to Python with approximately 2.5x performance improvement; contributed to CI/CD and production integration.</li>
+				</ul>
+				<div class="btn-row">
+					<a class="btn primary" href="https://www.linkedin.com/in/chunang-xu-5112011a3/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+					<a class="btn" href="mailto:frankxu000@outlook.com">Email Me</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="projects" aria-labelledby="projects-title">
+			<h2 id="projects-title" class="section-title">Project Samples</h2>
+			<p class="section-subtitle">
+				Selected projects that best demonstrate system design, implementation depth, and measurable outcomes.
+			</p>
+
+			<div class="projects">
+				<article class="project-card">
+					<h3>HConnect Capstone - Connected Care Platform</h3>
+					<p class="meta">Role: Full-stack developer | Timeline: 2026 | Team context: healthcare workflow platform</p>
+					<ul class="project-list">
+						<li>Designed and implemented doctor and patient workflow modules, including role-based dashboards, patient registration, profile management, and appointment/reporting pages.</li>
+						<li>Built and integrated secure backend APIs using Express and PostgreSQL for account data, match requests, health reports, patient advice, and security metadata retrieval.</li>
+						<li>Integrated Auth0 authentication and account operations, including password reset email flow, access-token based authorization, and protected API access patterns.</li>
+						<li>Implemented regional data boundary controls with configurable policy switches and country-aware user identity handling for doctor-patient relationship workflows.</li>
+						<li>Deployed and hardened production infrastructure with Nginx, PM2, HTTPS, and schema consistency fixes; resolved cross-environment defects to stabilize release behavior.</li>
+					</ul>
+					<div class="tag-row">
+						<span class="tag">React</span>
+						<span class="tag">Node.js/Express</span>
+						<span class="tag">PostgreSQL</span>
+						<span class="tag">Auth0</span>
+						<span class="tag">Secure API Design</span>
+					</div>
+					<figure class="project-visual">
+						<img
+							src="hconnect-dashboard-screenshot.png"
+							alt="HConnect doctor dashboard showing 7-day averages and trends"
+							onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+						/>
+						<div class="fallback">
+							Dashboard snapshot provided by author: 7-day averages and trend charts for blood pressure, weight, pain level, and sleep metrics.
+						</div>
+						<figcaption>
+							HConnect frontend screenshot: doctor-facing analytics dashboard for patient monitoring.
+						</figcaption>
+					</figure>
+					<div class="impact">
+						Reflection and impact: This capstone strengthened my ability to deliver end-to-end features under real deployment constraints.
+						I learned to align UX decisions, security rules, and data consistency so that both doctor and patient journeys remain reliable in production.
+					</div>
+				</article>
+
+				<article class="project-card">
+					<h3>Automated IOC Intelligence Collection Platform</h3>
+					<p class="meta">Role: Network Security Intern | Alibaba Group</p>
+					<ul class="project-list">
+						<li>Implemented multi-source IOC ingestion with APIs, BeautifulSoup, and regex-based parsing for large-scale threat data collection.</li>
+						<li>Designed modular data processing and PostgreSQL storage to support high-frequency querying and incremental synchronization via cron.</li>
+						<li>Supported architecture documentation and security analytics integration with SIEM and IDS/IPS pipelines.</li>
+					</ul>
+					<div class="tag-row">
+						<span class="tag">Python</span>
+						<span class="tag">Threat Intelligence</span>
+						<span class="tag">PostgreSQL</span>
+						<span class="tag">SIEM</span>
+					</div>
+					<div class="impact">
+						Reflection and impact: I learned how to convert fragmented external threat signals into structured intelligence usable by operational security systems.
+					</div>
+				</article>
+
+				<article class="project-card">
+					<h3>Load Test Generation Program</h3>
+					<p class="meta">Role: Assistant Engineer | Huawei Technologies Canada</p>
+					<ul class="project-list">
+						<li>Reimplemented a research algorithm from R to Python using NumPy vectorization and multiprocessing for significant runtime improvement.</li>
+						<li>Built preprocessing and sequence-modeling utilities for multi-GB logs, and supported data interface standards with product teams.</li>
+						<li>Added unit testing and GitLab CI/CD verification to improve confidence and release quality.</li>
+					</ul>
+					<div class="tag-row">
+						<span class="tag">Python</span>
+						<span class="tag">Performance Optimization</span>
+						<span class="tag">CI/CD</span>
+						<span class="tag">Testing</span>
+					</div>
+					<div class="impact">
+						Reflection and impact: This project improved my ability to bridge research outputs and production constraints while keeping measurable performance goals.
+					</div>
+				</article>
+
+				<article class="project-card">
+					<h3>Show Time - Social Networking Web App</h3>
+					<p class="meta">Role: Full-stack team member | 3-person project</p>
+					<ul class="project-list">
+						<li>Implemented account workflows with Auth0 and JWT-based auth for secure sign-up, sign-in, and role-based access handling.</li>
+						<li>Built real-time direct messaging using WebRTC and WebSocket.</li>
+						<li>Implemented backend routing, CRUD operations, and middleware-based authentication and authorization.</li>
+					</ul>
+					<div class="tag-row">
+						<span class="tag">WebRTC</span>
+						<span class="tag">WebSocket</span>
+						<span class="tag">JWT</span>
+						<span class="tag">Full-stack Web</span>
+					</div>
+					<div class="impact">
+						Reflection and impact: This project taught me practical real-time application architecture and secure session design beyond basic web CRUD.
+					</div>
+				</article>
+
+				<article class="project-card">
+					<h3>Pintos Educational Operating System Framework</h3>
+					<p class="meta">Role: Systems programming contributor</p>
+					<ul class="project-list">
+						<li>Implemented thread blocking, priority scheduling, process waiting, and synchronization behavior in kernel modules.</li>
+						<li>Implemented virtual memory components, including paging and swap slot management.</li>
+						<li>Built file-system buffer cache optimization for improved read/write performance.</li>
+					</ul>
+					<div class="tag-row">
+						<span class="tag">C</span>
+						<span class="tag">Operating Systems</span>
+						<span class="tag">Concurrency</span>
+						<span class="tag">Memory Management</span>
+					</div>
+					<div class="impact">
+						Reflection and impact: I developed stronger reasoning for low-level correctness, synchronization, and performance trade-offs under constrained environments.
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<section id="skills" aria-labelledby="skills-title">
+			<h2 id="skills-title" class="section-title">Skills and Endorsements</h2>
+			<p class="section-subtitle">
+				Technical and professional capabilities developed across coursework, internships, and projects.
+			</p>
+			<div class="skills-grid">
+				<article class="skill-box">
+					<h4>Programming and Data</h4>
+					<ul class="skill-list">
+						<li>Python, Java, C, JavaScript, SQL, R, MATLAB</li>
+						<li>Data cleaning, transformation, and automation workflows</li>
+						<li>Algorithm implementation and optimization</li>
+					</ul>
+				</article>
+				<article class="skill-box">
+					<h4>Web and Platform</h4>
+					<ul class="skill-list">
+						<li>React, Node.js/Express, Spring Boot, HTML/CSS</li>
+						<li>Auth0, JWT, WebSocket, WebRTC</li>
+						<li>RESTful API design and integration</li>
+					</ul>
+				</article>
+				<article class="skill-box">
+					<h4>Security and Systems</h4>
+					<ul class="skill-list">
+						<li>Network security fundamentals and cloud protection concepts</li>
+						<li>PostgreSQL, Git/GitHub, Jira, CI/CD pipelines</li>
+						<li>Operating systems and concurrency fundamentals (Pintos)</li>
+					</ul>
+				</article>
+			</div>
+		</section>
+
+		<section id="reflection" aria-labelledby="reflection-title">
+			<h2 id="reflection-title" class="section-title">Reflection and Professional Growth</h2>
+			<div class="card">
+				<p>
+					Through my MPS journey, I transitioned from primarily course-driven development to production-minded engineering.
+					I improved in three areas: end-to-end delivery, secure design decisions, and communication across technical stakeholders.
+					The capstone and internship experiences taught me how to turn ambiguous requirements into deployable systems,
+					balance speed with reliability, and evaluate trade-offs between user experience and security controls.
+				</p>
+				<p>
+					Going forward, I aim to deepen expertise in cloud security architecture and move toward technical leadership roles
+					where I can mentor teams while building secure, scalable software products.
+				</p>
+			</div>
+		</section>
+
+		<section id="contact" aria-labelledby="contact-title">
+			<h2 id="contact-title" class="section-title">Contact</h2>
+			<div class="card">
+				<ul class="list-tight">
+					<li><strong>Email:</strong> <a href="mailto:frankxu000@outlook.com">frankxu000@outlook.com</a></li>
+					<li><strong>Phone:</strong> +1 416-821-5694</li>
+					<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/chunang-xu-5112011a3/" target="_blank" rel="noopener noreferrer">linkedin.com/in/chunang-xu-5112011a3</a></li>
+				</ul>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="container">
+			Portfolio of Chunang Xu | MPS in Informatics | Updated March 2026
+		</div>
+	</footer>
+</body>
+</html>
